@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Crear Categoría";
+}
+
+<h3 class="mb-4">@ViewData["Title"]</h3>
+
+<form asp-action="Crear" method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Categoría</label>
+        <select class="form-select" name="categoriaSeleccionada" required>
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option>Albañilería</option>
+            <option>Electricidad</option>
+            <option>Plomería</option>
+            <option>Gas</option>
+            <option>Aluminio</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Estado</label>
+        <select class="form-select" name="estadoSeleccionado" required>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+        </select>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-center gap-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+
+</form>
+

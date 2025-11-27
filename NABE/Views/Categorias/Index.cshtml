@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Categorías";
+}
+
+<h2 class="mb-4">Categorías</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success">@TempData["Mensaje"]</div>
+}
+
+<a asp-controller="Categorias" asp-action="Crear" class="btn btn-primary mb-3">
+    Crear Categoría
+</a>
+
+<div class="alert alert-info">
+    No hay base de datos, por lo que no se muestran categorías registradas.
+</div>
