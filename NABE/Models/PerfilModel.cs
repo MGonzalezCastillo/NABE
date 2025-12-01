@@ -1,6 +1,6 @@
 ﻿namespace Nabe.Models
 {
-    public class Perfil
+    public class PerfilModel
     {
     }
 }
