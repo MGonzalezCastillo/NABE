@@ -5,9 +5,9 @@ namespace NABE.Controllers
 {
     public class ProveedoresController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ProveedoresController> _logger;
 
-        public ProveedoresController(ILogger<HomeController> logger)
+        public ProveedoresController(ILogger<ProveedoresController> logger)
         {
             _logger = logger;
         }

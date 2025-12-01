@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Nabe.Models.Proveedor
+
+@{
     ViewData["Title"] = "Crear Proveedor";
 }
 
@@ -6,9 +8,9 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
             <li class="breadcrumb-item">
-                <a asp-controller="Perfiles" asp-action="Index" class="link-body-emphasis fw-semibold text-decoration-none">
+                <a asp-controller="Proveedores" asp-action="Index" class="link-body-emphasis fw-semibold text-decoration-none">
                     <i class="bi bi-shuffle me-2"></i>
-                    <span>Perfiles</span>
+                    <span>Proveedores</span>
                 </a>
             </li>
             <li class="breadcrumb-item active">
@@ -23,7 +25,7 @@
     <div class="col-12">
         <h4 class="mb-3">@ViewData["Title"]</h4>
 
-        <form asp-controller="Perfiles" asp-action="Crear" class="needs-validation" method="post">
+        <form asp-controller="Proveedores" asp-action="Crear" method="post">
 
             <div class="row g-4">
 
@@ -31,27 +33,35 @@
                 <div class="col-md-6">
 
                     <div class="mb-3">
-                        <label class="form-label">Nombre</label>
-                        <input type="text" class="form-control">
+                        <label asp-for="Nombre" class="form-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Apellido Paterno</label>
-                        <input type="text" class="form-control">
+                        <label asp-for="ApellidoPaterno" class="form-label"></label>
+                        <input asp-for="ApellidoPaterno" class="form-control" />
+                        <span asp-validation-for="ApellidoPaterno" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Apellido Materno</label>
-                        <input type="text" class="form-control">
+                        <label asp-for="ApellidoMaterno" class="form-label"></label>
+                        <input asp-for="ApellidoMaterno" class="form-control" />
+                        <span asp-validation-for="ApellidoMaterno" class="text-danger"></span>
                     </div>
 
+                    <!-- TELEFONO NUMÉRICO -->
                     <div class="mb-3">
                         <label class="form-label">Teléfono</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" maxlength="10"
+                               oninput="this.value = this.value.replace(/[^0-9]/g,'');"
+                               placeholder="Solo números">
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label">Correo</label>
-                        <input type="email" class="form-control">
+                        <label asp-for="Correo" class="form-label"></label>
+                        <input asp-for="Correo" type="email" class="form-control" />
+                        <span asp-validation-for="Correo" class="text-danger"></span>
                     </div>
 
                 </div>
@@ -59,37 +69,46 @@
                 <!-- COLUMNA DERECHA -->
                 <div class="col-md-6">
 
-                   
                     <div class="mb-3">
-                        <label class="form-label">Dirección</label>
-                        <input type="text" class="form-control">
+                        <label asp-for="Direccion" class="form-label"></label>
+                        <input asp-for="Direccion" class="form-control" />
+                        <span asp-validation-for="Direccion" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Zona</label>
-                        <input type="text" class="form-control">
+                        <label asp-for="Zona" class="form-label"></label>
+                        <input asp-for="Zona" class="form-control" />
+                        <span asp-validation-for="Zona" class="text-danger"></span>
                     </div>
 
+                    <!-- CONTRASEÑA CON OJITO -->
                     <div class="mb-3">
                         <label class="form-label">Contraseña</label>
-                        <input type="password" class="form-control">
+                        <div class="input-group">
+                            <input type="password" id="clave" class="form-control" required>
+                            <span class="input-group-text" onclick="togglePassword('clave','icon1')">
+                                <i id="icon1" class="bi bi-eye"></i>
+                            </span>
+                        </div>
                     </div>
 
+                    <!-- CONFIRMAR CONTRASEÑA CON OJITO -->
                     <div class="mb-3">
                         <label class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control">
+                        <div class="input-group">
+                            <input type="password" id="clave2" class="form-control" required>
+                            <span class="input-group-text" onclick="togglePassword('clave2','icon2')">
+                                <i id="icon2" class="bi bi-eye"></i>
+                            </span>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Validación </label>
-                        <input type="password" class="form-control">
-                    </div>
+
                 </div>
 
             </div>
 
             <hr class="my-4">
 
-            <!-- BOTONES CENTRADOS -->
             <div class="d-flex justify-content-center gap-3">
                 <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
                 <button class="btn btn-secondary btn-lg" type="button">Cancelar</button>
@@ -98,3 +117,23 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function togglePassword(idCampo, idIcono) {
+            let campo = document.getElementById(idCampo);
+            let icono = document.getElementById(idIcono);
+
+            if (campo.type === "password") {
+                campo.type = "text";
+                icono.classList.remove("bi-eye");
+                icono.classList.add("bi-eye-slash");
+            } else {
+                campo.type = "password";
+                icono.classList.remove("bi-eye-slash");
+                icono.classList.add("bi-eye");
+            }
+        }
+    </script>
+}
+

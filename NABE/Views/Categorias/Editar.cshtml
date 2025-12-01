@@ -1,12 +1,14 @@
 ﻿@model Nabe.Models.Categoria
 
 @{
-    ViewData["Title"] = "Crear Categoría";
+    ViewData["Title"] = "Editar Categoría";
 }
 
-<h2>Crear Categoría</h2>
+<h2>Editar Categoría</h2>
 
-<form asp-action="Crear" method="post">
+<form asp-action="Editar" method="post">
+    <input type="hidden" asp-for="Id" />
+
     <div class="mb-3">
         <label asp-for="Nombre" class="form-label"></label>
         <input asp-for="Nombre" class="form-control" />
@@ -18,7 +20,7 @@
         <textarea asp-for="Descripcion" class="form-control"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button type="submit" class="btn btn-success">Actualizar</button>
     <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </form>
 

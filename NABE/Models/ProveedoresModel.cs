@@ -16,6 +16,7 @@ namespace Nabe.Models
         public required string ApellidoMaterno { get; set; }
 
         [Required]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "El teléfono debe tener solo números y 10 dígitos.")]
         public required string Telefono { get; set; }
 
         [Required]
@@ -31,10 +32,8 @@ namespace Nabe.Models
         [Required]
         public required string Contrasena { get; set; }
 
-        // ❗ OJO: ConfirmarContraseña NO se guarda en la BD, solo para validación en formularios
         [Compare("Contrasena", ErrorMessage = "Las contraseñas no coinciden.")]
         public string? ConfirmarContrasena { get; set; }
-
-        public int? Valoracion { get; set; }
     }
 }
+

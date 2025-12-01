@@ -11,6 +11,8 @@ namespace NABE.Controllers
         public PerfilesController(ILogger<HomeController> logger)
         {
             _logger = logger;
+
+
         }
 
         public IActionResult Index()

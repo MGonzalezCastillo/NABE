@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Nabe.Models;
 
 namespace NABE.Controllers
 {
@@ -6,7 +7,8 @@ namespace NABE.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            // Redirige directo al formulario Crear
+            return RedirectToAction("Crear");
         }
 
         public IActionResult Crear()
@@ -15,10 +17,9 @@ namespace NABE.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crear(string categoriaSeleccionada, string estadoSeleccionado)
+        public IActionResult Crear(Categoria categoria)
         {
-            // Aquí es donde después podrás guardar en DB si lo deseas
-
+            // Aquí luego guardarás en la base de datos
             TempData["Mensaje"] = "Categoría guardada correctamente.";
             return RedirectToAction("Index");
         }

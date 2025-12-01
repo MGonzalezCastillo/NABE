@@ -1,4 +1,4 @@
-﻿namespace Nabe.Controllers
+﻿namespace NABE.Models
 {
     internal class ApplicationDbContext
     {
