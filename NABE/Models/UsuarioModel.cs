@@ -23,6 +23,6 @@ namespace Nabe.Models
         [Required]
         public int PerfilId { get; set; }
 
-        public PerfilModel? Perfil { get; set; }
+        public PerfilesModel? Perfil { get; set; }
     }
 }
