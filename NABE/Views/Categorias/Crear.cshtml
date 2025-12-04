@@ -4,26 +4,61 @@
     ViewData["Title"] = "Crear Categoría";
 }
 
-<h2>Crear Categoría</h2>
+<div class="my-4">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+            <li class="breadcrumb-item">
+                <a asp-controller="Proveedores" asp-action="Index" class="link-body-emphasis fw-semibold text-decoration-none">
+                    <i class="bi bi-shuffle me-2"></i>
+                    <span>Categorías</span>
+                </a>
+            </li>
+            <li class="breadcrumb-item active">
+                <i class="bi bi-geo me-2"></i>
+                <span>@ViewData["Title"]</span>
+            </li>
+        </ol>
+    </nav>
+</div>
 
-<form asp-action="Crear" method="post">
-    <div class="mb-3">
-        <label asp-for="Nombre" class="form-label"></label>
-        <input asp-for="Nombre" class="form-control" />
-        <span asp-validation-for="Nombre" class="text-danger"></span>
+<div class="row">
+
+    <div class="col-12">
+
+        <h4 class="mb-3">@ViewData["Title"]</h4>
+
+        <form asp-controller="Categorias" asp-action="Crear" method="post">
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="Nombre" class="form-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Descripcion" class="form-label"></label>
+                        <input asp-for="Descripcion" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
+                <button class="btn btn-secondary btn-lg" type="button">Cancelar</button>
+            </div>
+        </form>
+
     </div>
+</div>
 
-    <div class="mb-3">
-        <label asp-for="Descripcion" class="form-label"></label>
-        <textarea asp-for="Descripcion" class="form-control"></textarea>
-    </div>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-</form>
 
-@section Scripts {
+@* @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+ *@
