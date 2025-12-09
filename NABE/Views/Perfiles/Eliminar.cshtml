@@ -1,0 +1,17 @@
+﻿@model Nabe.Models.PerfilesModel
+
+<h3>Eliminar Perfil</h3>
+
+<p>¿Seguro que deseas eliminar este perfil?</p>
+
+<ul>
+    <li><strong>Clave:</strong> @Model.Clave</li>
+    <li><strong>Descripción:</strong> @Model.Descripcion</li>
+    <li><strong>Estatus:</strong> @Model.Estatus</li>
+</ul>
+
+<form asp-action="Eliminar" method="post">
+    <input type="hidden" asp-for="IDPerfil" />
+    <button class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

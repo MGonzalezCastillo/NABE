@@ -1,4 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Nabe.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// -------------- IMPORTANTE: Agregar DbContext --------------
+builder.Services.AddDbContext<NabeDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// ------------------------------------------------------------
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Acceso}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
