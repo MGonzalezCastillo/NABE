@@ -1,14 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Nabe.Models;
+using NABE.Data;
+using System.Security.Claims;
 
 namespace NABE.Controllers
 {
     public class CategoriasController : Controller
     {
-        public IActionResult Index()
+        private readonly ILogger<HomeController> _logger;
+
+        public CategoriasController(ILogger<HomeController> logger)
         {
-            // Redirige directo al formulario Crear
-            return RedirectToAction("Crear");
+            _logger = logger;
+
+
         }
 
         public IActionResult Crear()
@@ -16,12 +21,27 @@ namespace NABE.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public IActionResult Crear(Categoria categoria)
+        public IActionResult Crear(CategoriaModel oCategoria)
         {
-            // Aquí luego guardarás en la base de datos
-            TempData["Mensaje"] = "Categoría guardada correctamente.";
-            return RedirectToAction("Index");
+            //oCategoria.idUsuarioRegistro = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            try
+            {
+                CategoriasDAL.CreateCategoria(oCategoria);
+                return RedirectToAction("Crear");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View();
+            }
         }
     }
 }

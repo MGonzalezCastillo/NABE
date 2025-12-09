@@ -2,13 +2,13 @@
 
 namespace Nabe.Models
 {
-    public class Categoria
+    public class CategoriaModel
     {
-        public int Id { get; set; } // Clave primaria automática
+        public int id { get; set; } // Clave primaria automática
 
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-        public required string Nombre { get; set; }
-
-        public string? Descripcion { get; set; } // Opcional
+        [Required(ErrorMessage = "Este campo es requerido")]
+        [MaxLength(199, ErrorMessage = "No puede contener más de 199 caracteres")]
+        [MinLength(3, ErrorMessage = "Debe contener un minimo de 3 caracteres")]
+        public required string descripcion { get; set; }
     }
 }
