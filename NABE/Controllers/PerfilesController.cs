@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD
 using Nabe.Data;
 using Nabe.Models;
+=======
+using NABE.Models;
+>>>>>>> ba2c87546264314666fb6ccf6c3395b02735eada
 
 namespace Nabe.Controllers
 {

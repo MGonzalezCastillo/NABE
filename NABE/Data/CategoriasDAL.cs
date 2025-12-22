@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Nabe.Data;
 using NABE.Models;
+=======
+﻿using Nabe.Models;
+using NuGet.Protocol.Plugins;
+using System.Data;
+using Microsoft.Data.SqlClient;
+>>>>>>> ba2c87546264314666fb6ccf6c3395b02735eada
 
 namespace NABE.Data
 {
     public class CategoriasDAL
     {
+<<<<<<< HEAD
         private readonly NabeDbContext _context;
 
         public CategoriasDAL(NabeDbContext context)
@@ -74,6 +82,33 @@ namespace NABE.Data
             _context.Database.ExecuteSqlRaw(
                 "EXEC sp_Categorias_CRUD @Operacion, @IDCategoria",
                 parametros);
+=======
+        public static void CreateCategoria(CategoriaModel categoria)
+        {
+            try
+            {
+                using (SqlConnection con = new Connection().GetConnection())
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = con;
+                        cmd.CommandText = "ProcCreateCategoria";
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@descripcion", categoria.descripcion);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                //e.Message
+                throw;
+            }
+>>>>>>> ba2c87546264314666fb6ccf6c3395b02735eada
         }
     }
 }
