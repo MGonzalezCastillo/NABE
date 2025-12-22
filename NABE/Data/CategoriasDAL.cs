@@ -29,6 +29,7 @@ namespace NABE.Data
             }
             catch (Exception)
             {
+                //e.Message
                 throw;
             }
         }
