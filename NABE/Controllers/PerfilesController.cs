@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using Nabe.Data;
 using Nabe.Models;
 =======
+=======
+>>>>>>> ba2c87546264314666fb6ccf6c3395b02735eada
 using NABE.Models;
 >>>>>>> ba2c87546264314666fb6ccf6c3395b02735eada
 
