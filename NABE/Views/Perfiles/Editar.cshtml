@@ -1,0 +1,25 @@
+﻿@model Nabe.Models.PerfilesModel
+
+<h3>Editar Perfil</h3>
+
+<form asp-action="Editar" method="post">
+
+    <input type="hidden" asp-for="IDPerfil" />
+
+    <div class="mb-3">
+        <label asp-for="Clave"></label>
+        <input asp-for="Clave" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Descripcion"></label>
+        <input asp-for="Descripcion" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Estatus"></label>
+        <input asp-for="Estatus" class="form-control" />
+    </div>
+
+    <button class="btn btn-warning">Actualizar</button>
+</form>

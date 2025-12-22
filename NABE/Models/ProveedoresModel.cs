@@ -1,39 +1,61 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Nabe.Models
+namespace NABE.Models
 {
     public class Proveedor
     {
-        public int Id { get; set; }
+        public int IDProveedor { get; set; }
 
         [Required]
-        public required string Nombre { get; set; }
+        [MaxLength(100)]
+        public string Nombre { get; set; }
+
+        [MaxLength(100)]
+        public string ApePaterno { get; set; }
+
+        [MaxLength(100)]
+        public string ApeMaterno { get; set; }
+
+        [Required, EmailAddress]
+        public string Correo { get; set; }
+
+        [MaxLength(18)]
+        public string CURP { get; set; }
+
+        [MaxLength(13)]
+        public string RFC { get; set; }
+
+        [MaxLength(30)]
+        public string INE { get; set; }
+
+        [MaxLength(12)]
+        public string Telefono { get; set; }
+
+        public bool TelefonoValidado { get; set; }
+
+        [MaxLength(200)]
+        public string Empresa { get; set; }
+
+        [MaxLength(150)]
+        public string Direccion { get; set; }
+
+        [MaxLength(200)]
+        public string Referencia { get; set; }
+
+        [MaxLength(150)]
+        public string Zona { get; set; }
+
+        [NotMapped]
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
 
         [Required]
-        public required string ApellidoPaterno { get; set; }
+        public string FotoURL { get; set; }
 
-        [Required]
-        public required string ApellidoMaterno { get; set; }
+        public string Valoracion { get; set; }
 
-        [Required]
-        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "El teléfono debe tener solo números y 10 dígitos.")]
-        public required string Telefono { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public required string Correo { get; set; }
-
-        [Required]
-        public required string Direccion { get; set; }
-
-        [Required]
-        public required string Zona { get; set; }
-
-        [Required]
-        public required string Contrasena { get; set; }
-
-        [Compare("Contrasena", ErrorMessage = "Las contraseñas no coinciden.")]
-        public string? ConfirmarContrasena { get; set; }
+        public string Estatus { get; set; }
     }
 }
-
