@@ -27,6 +27,7 @@ namespace NABE.Data
                     }
                 }
             }
+            //exito
             catch (Exception)
             {
                 //e.Message
