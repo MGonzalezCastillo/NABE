@@ -1,0 +1,14 @@
+﻿@model Nabe.Models.UsuarioModel
+
+<h2>Crear Usuario</h2>
+
+<form asp-action="Crear" method="post">
+    <input asp-for="Nombre" placeholder="Nombre" />
+    <input asp-for="ApePaterno" placeholder="Apellido Paterno" />
+    <input asp-for="ApeMaterno" placeholder="Apellido Materno" />
+    <input asp-for="Correo" placeholder="Correo" />
+    <input asp-for="Telefono" placeholder="Teléfono" />
+    <input asp-for="Password" type="password" placeholder="Contraseña" />
+
+    <button type="submit">Guardar</button>
+</form>

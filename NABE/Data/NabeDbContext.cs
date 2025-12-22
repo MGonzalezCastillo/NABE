@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Nabe.Models;
-using System.Collections.Generic;
+using NABE.Models;
 
 namespace Nabe.Data
 {
@@ -12,5 +12,10 @@ namespace Nabe.Data
         }
 
         public DbSet<PerfilesModel> Perfiles { get; set; }
+        public DbSet<Proveedor> Proveedores { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<UsuarioModel> Usuarios { get; set; }
+
+
     }
 }

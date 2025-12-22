@@ -1,14 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Nabe.Models;
+using NABE.Models;
+using NABE.Data;
 
 namespace NABE.Controllers
 {
     public class CategoriasController : Controller
     {
+        private readonly CategoriasDAL _dal;
+
+        public CategoriasController(CategoriasDAL dal)
+        {
+            _dal = dal;
+        }
+
         public IActionResult Index()
         {
-            // Redirige directo al formulario Crear
-            return RedirectToAction("Crear");
+            var lista = _dal.Consultar();
+            return View(lista);
         }
 
         public IActionResult Crear()
@@ -17,10 +25,13 @@ namespace NABE.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crear(Categoria categoria)
+        [ValidateAntiForgeryToken]
+        public IActionResult Crear(Categoria model)
         {
-            // Aquí luego guardarás en la base de datos
-            TempData["Mensaje"] = "Categoría guardada correctamente.";
+            if (!ModelState.IsValid)
+                return View(model);
+
+            _dal.Crear(model);
             return RedirectToAction("Index");
         }
     }

@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Nabe.Models
+namespace NABE.Models
 {
     public class Categoria
     {
-        public int Id { get; set; } // Clave primaria automática
+        public int IDCategoria { get; set; }
 
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-        public required string Nombre { get; set; }
+        [Required(ErrorMessage = "La descripción es obligatoria")]
+        [MaxLength(100)]
+        public string Descripcion { get; set; }
 
-        public string? Descripcion { get; set; } // Opcional
+        [MaxLength(20)]
+        public string Estatus { get; set; }
     }
 }

@@ -1,0 +1,11 @@
+﻿@model Nabe.Models.UsuarioModel
+
+<h2>Eliminar Usuario</h2>
+
+<p>¿Seguro que deseas eliminar a <strong>@Model.Nombre</strong>?</p>
+
+<form asp-action="EliminarConfirmado" method="post">
+    <input type="hidden" name="id" value="@Model.IDUsuario" />
+    <button type="submit">Eliminar</button>
+    <a asp-action="Index">Cancelar</a>
+</form>

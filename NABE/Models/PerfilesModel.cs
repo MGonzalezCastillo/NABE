@@ -1,10 +1,18 @@
-﻿namespace Nabe.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Nabe.Models
 {
     public class PerfilesModel
     {
         public int IDPerfil { get; set; }
-        public int Clave { get; set; }
-        public required string Descripcion { get; set; }
-        public required string Estatus { get; set; }
+
+        [Required]
+        public decimal Clave { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        public string Descripcion { get; set; }
+
+        public string Estatus { get; set; }
     }
 }
