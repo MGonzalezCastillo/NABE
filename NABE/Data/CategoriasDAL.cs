@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Nabe.Data;
-using NABE.Models;
-=======
-=======
->>>>>>> ba2c87546264314666fb6ccf6c3395b02735eada
-﻿using Nabe.Models;
+using Nabe.Models;
 using NuGet.Protocol.Plugins;
 using System.Data;
 using Microsoft.Data.SqlClient;
