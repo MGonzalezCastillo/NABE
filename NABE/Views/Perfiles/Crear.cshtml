@@ -1,0 +1,20 @@
+﻿@model Nabe.Models.PerfilesModel
+
+<h3>Crear Perfil</h3>
+
+<form asp-action="Crear" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Clave"></label>
+        <input asp-for="Clave" class="form-control" />
+        <span asp-validation-for="Clave" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Descripcion"></label>
+        <input asp-for="Descripcion" class="form-control" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary">Guardar</button>
+</form>

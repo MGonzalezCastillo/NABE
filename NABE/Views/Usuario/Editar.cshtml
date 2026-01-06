@@ -1,0 +1,15 @@
+﻿@model Nabe.Models.UsuarioModel
+
+<h2>Editar Usuario</h2>
+
+<form asp-action="Editar" method="post">
+    <input type="hidden" asp-for="IDUsuario" />
+
+    <input asp-for="Nombre" />
+    <input asp-for="ApePaterno" />
+    <input asp-for="Correo" />
+    <input asp-for="Telefono" />
+    <input asp-for="Estatus" />
+
+    <button type="submit">Actualizar</button>
+</form>
