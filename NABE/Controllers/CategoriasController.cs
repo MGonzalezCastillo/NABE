@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD
+using NABE.Models;
+using NABE.Data;
+=======
 using Nabe.Models;
 using NABE.Data;
 using System.Security.Claims;

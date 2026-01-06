@@ -1,15 +1,35 @@
+using Microsoft.EntityFrameworkCore;
+using Nabe.Data;
+using NABE.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ================== REGISTRO DE SERVICIOS ==================
+
+// DbContext (EF Core)
+builder.Services.AddDbContext<NabeDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    )
+);
+
+// DALs (Stored Procedures)
+builder.Services.AddScoped<PerfilesDAL>();
+builder.Services.AddScoped<CategoriasDAL>();
+builder.Services.AddScoped<ProveedoresDAL>();
+builder.Services.AddScoped<UsuariosDAL>();
+
+// MVC
 builder.Services.AddControllersWithViews();
+
+// ===========================================================
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ================== PIPELINE ==================
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -22,6 +42,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Acceso}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
